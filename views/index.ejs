@@ -1,0 +1,41 @@
+<%- include('./tags/head.ejs') %>
+    <div class="form-container">
+        <form action="/" method="POST">
+            <label>Youtube ID</label>
+            <div>
+                <input type="text" placeholder="Paste the id here" name="youtubeid" value="">
+                <button id="seatchBtn">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <div class=" <%= data.isResult ? "result-container": "hidden" %>">
+        <div class="result-box">
+            <div id="img-container">
+                <img src="<%= data.results[1] ? data.results[1].thumbnail[1].url : "link" %>" alt="">
+            </div>
+            <div class="result-details">
+                <div id="song-title">
+                    <p><%= data.results[0] ? data.results[0].title : "No Title" %></p>
+                </div>
+                <div id="song-details">
+                    <p>Duration: <%= data.results[1] ? (data.results[1].lengthSeconds / 60).toFixed(2) : "No duration"  %> Minutes</p>
+                    <p>Youtube Channel:  <%= data.results[1] ? data.results[1].channelTitle : "Can't Find Youtube Channel"  %></p>
+                </div>
+                <div id="audio-download">
+                    <p>Audio</p>
+                    <a href="<%= data.results[0] ? data.results[0].link : "#" %>"><button>Download</button></a>
+                </div>
+                <div class="video-download">
+                    <p>Video</p>
+                    <div>
+                        <% data.results[1] ? data.results[1].formats.map(format => { %>
+                            <a href="<%= format ? format.url : "#"  %>"><button><%= format ? format.qualityLabel : "Download" %></button></a>
+                        <%}) : `<p> No Links Available </p>` %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('./tags/footer.ejs') %>
+
