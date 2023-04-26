@@ -9,6 +9,13 @@
         </form>
     </div>
 
+    <!-- validation response -->
+    <% if (data.errorStatus) { %>
+        <div id="errorStatus"><%= data.message %></div>
+    <% } else {%>
+        <div></div>
+    <% } %>
+    
     <div class=" <%= data.isResult ? "result-container": "hidden" %>">
         <div class="result-box">
             <div id="img-container">

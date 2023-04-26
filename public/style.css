@@ -103,7 +103,6 @@ form > div > input::placeholder{
     border-radius: 5px;
     background-color: #141313;
     color: #ccbfbf;
-    padding-block: 2;
     padding-inline: 1.1rem;
     font-weight: 500;
     right: 5px;
@@ -192,6 +191,16 @@ form > div > input::placeholder{
     transform: translateY(2px);
 }
 
+#errorStatus{
+    padding: 1em;
+    background-color: #b15252;
+    width: 300px;
+    text-align: center;
+    margin: 2em auto;
+    border-radius: 8px;
+    color: #fff;
+}
+
 /* footer */
 
 footer{
@@ -252,7 +261,13 @@ footer > p{
 
 
 /* Mobile responsive */
-@media only screen and (max-width: 468px) {
+@media(max-width: 475px) {
+    body{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        padding-bottom: 259px;
+    }
     nav {
         padding: 1.4em 1em;
         flex-direction: column;
@@ -299,17 +314,17 @@ footer > p{
         min-height: 51px;
     }
     form > div > input{
-        width: 90%;
+        width: 100%;
         border: none;
         border:1px solid #000;
         border-radius: 5px;
         height: 54px;
-        padding-inline: 1rem;
         font-weight: 500;
         position: absolute;
     }
     form > div > input::placeholder{
         font-style: italic;
+        padding-left: 1rem;
     }
     #seatchBtn{
         position: absolute;
@@ -317,8 +332,7 @@ footer > p{
         border-radius: 5px;
         background-color: #141313;
         color: #ccbfbf;
-        padding-block: 2;
-        padding-inline: 1.1rem;
+        padding:0 1em;
         font-weight: 500;
         right: 5px;
         top: 6px;
@@ -383,10 +397,59 @@ footer > p{
         transition: 100ms ease-in;
         border-radius: 5px;
     }
-    #audio-download > a button:hover,
-    .video-download >div button:hover{
-        background-color: #4b4949;
-        transform: translateY(2px);
+
+    /*  Guide Page */
+
+    .guide-wrapper{
+        padding: 1.4em 2.9em;
+        display: flex;
+        flex-direction: column;
+        min-height: min-content;
     }
+
+    .guide-wrapper .instructions{
+        padding-left: 1em;
+        margin-top: 10px;
+    }
+    .guide-wrapper .desktop-wrapper,
+    .mobile-wrapper {
+        font-size: 14px;
+    }
+    .guide-wrapper .desktop-wrapper h1,
+    .guide-wrapper .mobile-wrapper h1{
+        font-size: 19px;
+        margin-top: 30px;
+    }
+    .instructions ol{
+        line-height: 1.8rem;
+    }
+
+    /* About Page */
+
+    .about-wrapper{
+
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .about-wrapper > div{
+        max-width: 80%;
+        text-indent: 20px;
+        display: flex;
+        height: 100%;
+        padding: 1em;
+        margin-top: 30px;
+        text-align: justify;
+    }
+
+    .about-wrapper > div h3{
+        margin-bottom: 30px;
+    }
+
     
 }

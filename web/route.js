@@ -2,11 +2,12 @@ const express = require('express')
 const Route = express.Router()
 const pageControl = require('../Controller/PageControl')
 
-
+// middleware
 Route.use((req,res,next)=>{
     res.locals.currentPath = req.path;
     next()
 })
+
 // Get Request
 Route.get('/',pageControl.index)
 Route.get('/guide',pageControl.guide)

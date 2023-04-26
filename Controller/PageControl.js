@@ -14,6 +14,16 @@ exports.index = function(req,res){
 exports.search = function(req,res){
     const youtube_id = req.body.youtubeid
 
+    if(youtube_id === null || youtube_id === ""){
+        let data = {
+            isResult: false,
+            message: "Insert a Youtube ID",
+            errorStatus: true,
+            results:[]
+        }
+        return res.render('index',{data:data})
+    }
+
     // configuration for youtube to audio API
     let musicConfig = axios.get('https://youtube-mp36.p.rapidapi.com/dl',{
         "params":{id: youtube_id},
