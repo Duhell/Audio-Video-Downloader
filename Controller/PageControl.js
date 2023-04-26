@@ -49,3 +49,12 @@ exports.search = function(req,res){
 
     
 }
+
+
+exports.guide = function(req,res){
+    return res.render('guide')
+}
+
+exports.about = function(req,res){
+    return res.render('about')
+}
