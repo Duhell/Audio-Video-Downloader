@@ -2,9 +2,9 @@
 <nav id="sticky-navigation">
     <a href="/" id="logo">Youtube <span id="colorDownload">Downloader</span></a>
     <div>
-        <a href="/">Home</a>
-        <a href="#">Guide</a>
-        <a href="#">About</a>
+        <a class="<%= currentPath === '/' ? 'active': '' %>" href="/">Home</a>
+        <a class="<%= currentPath === '/guide' ? 'active': '' %>" href="/guide">Guide</a>
+        <a class="<%= currentPath === '/about' ? 'active': '' %>" href="/about">About</a>
     </div>
     <button class="hamburger">&#9776;</button>
 </nav>
