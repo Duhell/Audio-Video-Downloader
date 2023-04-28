@@ -311,10 +311,10 @@ footer > p{
 
     .form-container > form{
         min-width: 306px;
-        min-height: 51px;
+        min-height: min-content;
     }
     form > div > input{
-        width: 100%;
+        width: 90%;
         border: none;
         border:1px solid #000;
         border-radius: 5px;
