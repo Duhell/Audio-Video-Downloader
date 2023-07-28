@@ -32,7 +32,13 @@ exports.search = function(req,res){
         splitUrl = url.split("youtu.be/")
         videoid = splitUrl[1]
     }else{
-        console.log("Invalid URL format")
+        let data = {
+            isResult: false,
+            message: "Invalid Youtube Link",
+            errorStatus: true,
+            results:[]
+        }
+        return res.render('index',{data:data})
     }
 
 
