@@ -12,21 +12,33 @@ exports.index = function(req,res){
 
 // return to index page but with data
 exports.search = function(req,res){
-    const youtube_id = req.body.youtubeid
-
-    if(youtube_id === null || youtube_id === ""){
+    const url = req.body.youtubeid
+    let splitUrl;
+    let videoid;
+    if(url === null || url === ""){
         let data = {
             isResult: false,
-            message: "Insert a Youtube ID",
+            message: "Insert a Youtube Link",
             errorStatus: true,
             results:[]
         }
         return res.render('index',{data:data})
     }
 
+    if(url.includes("watch?v=")){
+        splitUrl = url.split("watch?v=")
+        videoid = splitUrl[1]
+    }else if(url.includes("youtu.be/")) {
+        splitUrl = url.split("youtu.be/")
+        videoid = splitUrl[1]
+    }else{
+        console.log("Invalid URL format")
+    }
+
+
     // configuration for youtube to audio API
     let musicConfig = axios.get('https://youtube-mp36.p.rapidapi.com/dl',{
-        "params":{id: youtube_id},
+        "params":{id: videoid},
         "headers": {
             "X-RapidAPI-Key": process.env.MUSIC_API_KEY,
             "X-RapidAPI-Host": process.env.MUSIC_API_HOST
@@ -35,7 +47,7 @@ exports.search = function(req,res){
 
     // configuration for youtube to video API with formats
     let videoConfig = axios.get('https://ytstream-download-youtube-videos.p.rapidapi.com/dl',{
-        "params":{id: youtube_id},
+        "params":{id: videoid},
         "headers": {
             "X-RapidAPI-Key": process.env.VIDEO_API_KEY,
             "X-RapidAPI-Host": process.env.VIDEO_API_HOST
